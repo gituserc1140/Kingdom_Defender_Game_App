@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kingdom Defender</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <header class="top-bar" id="topBar">
+        <div>Gold: <span id="goldValue">0</span></div>
+        <div>Castle: <span id="castleHealthValue">0/0</span></div>
+        <div>Wave: <span id="waveValue">1</span></div>
+        <div>Enemies: <span id="enemiesValue">0</span></div>
+      </header>
+
+      <div class="upgrade-bar" id="upgradeBar">
+        <button id="upgradeHealthBtn" class="small-btn">Upgrade Health</button>
+        <button id="upgradeDamageBtn" class="small-btn">Upgrade Damage</button>
+        <button id="upgradeRangeBtn" class="small-btn">Upgrade Range</button>
+        <button id="upgradeRepairBtn" class="small-btn">Repair Upgrade</button>
+      </div>
+
+      <main class="game-stage">
+        <canvas id="gameCanvas" width="1000" height="560"></canvas>
+
+        <section id="mainMenu" class="overlay visible">
+          <h1>Kingdom Defender</h1>
+          <p>Defend your castle from endless waves.</p>
+          <div class="menu-buttons">
+            <button id="playBtn" class="menu-btn">Play</button>
+            <button id="instructionsBtn" class="menu-btn">Instructions</button>
+          </div>
+        </section>
+
+        <section id="instructionsPanel" class="overlay hidden">
+          <h2>How to Play</h2>
+          <ul>
+            <li>Recruit defenders to stop enemies moving from right to left.</li>
+            <li>Use gold from enemy defeats to recruit and upgrade.</li>
+            <li>Unlock Knight at wave 3, Mage at wave 5.</li>
+            <li>Damage/Range/Repair upgrades unlock at wave 10.</li>
+            <li>Elite enemies start at wave 20, boss appears every 10 waves.</li>
+          </ul>
+          <button id="backToMenuBtn" class="menu-btn">Back</button>
+        </section>
+
+        <section id="pauseMenu" class="overlay hidden">
+          <h2>Paused</h2>
+          <div class="menu-buttons">
+            <button id="resumeBtn" class="menu-btn">Resume</button>
+            <button id="pauseToMenuBtn" class="menu-btn">Main Menu</button>
+          </div>
+        </section>
+
+        <section id="gameOverScreen" class="overlay hidden">
+          <h2>Game Over</h2>
+          <p id="gameOverText"></p>
+          <button id="playAgainBtn" class="menu-btn">Play Again</button>
+        </section>
+
+        <section id="victoryScreen" class="overlay hidden">
+          <h2>Victory!</h2>
+          <p id="victoryText"></p>
+          <button id="victoryPlayAgainBtn" class="menu-btn">Play Again</button>
+        </section>
+
+        <button id="pauseBtn" class="pause-btn hidden">Pause</button>
+      </main>
+
+      <footer class="action-bar" id="actionBar">
+        <button id="recruitArcherBtn" class="action-btn">Recruit Archer</button>
+        <button id="recruitKnightBtn" class="action-btn" disabled>Recruit Knight</button>
+        <button id="recruitMageBtn" class="action-btn" disabled>Recruit Mage</button>
+        <button id="fireballBtn" class="action-btn">Fireball</button>
+        <button id="arrowRainBtn" class="action-btn">Arrow Rain</button>
+        <button id="repairCastleBtn" class="action-btn">Repair Castle</button>
+      </footer>
+    </div>
+
+    <script type="module" src="game.js"></script>
+  </body>
+</html>

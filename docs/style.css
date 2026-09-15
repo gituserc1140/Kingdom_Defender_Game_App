@@ -1,0 +1,179 @@
+:root {
+  --bg-dark: #11131d;
+  --panel: #1c2130;
+  --castle: #8a8f99;
+  --enemy: #d54444;
+  --gold: #ffd94d;
+  --archer: #4caf50;
+  --knight: #4e79ff;
+  --mage: #8e58ff;
+  --text: #eef2ff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(180deg, #0e1118, #1d2435);
+  color: var(--text);
+}
+
+#app {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+}
+
+.top-bar,
+.upgrade-bar,
+.action-bar {
+  display: grid;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  background: rgba(10, 14, 24, 0.85);
+  backdrop-filter: blur(2px);
+}
+
+.top-bar {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  font-weight: 700;
+  text-align: center;
+}
+
+.upgrade-bar {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.game-stage {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+#gameCanvas {
+  width: 100%;
+  max-width: 1000px;
+  height: auto;
+  max-height: calc(100vh - 14rem);
+  background: linear-gradient(180deg, #212a3f 0%, #1c2b42 35%, #1e1d28 100%);
+  touch-action: manipulation;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+  background: rgba(8, 10, 16, 0.84);
+  text-align: center;
+  padding: 1rem;
+  z-index: 10;
+}
+
+.overlay.visible {
+  display: flex;
+}
+
+.overlay.hidden {
+  display: none;
+}
+
+.menu-buttons {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.menu-btn,
+.action-btn,
+.small-btn,
+.pause-btn {
+  border: none;
+  border-radius: 0.65rem;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.menu-btn,
+.pause-btn {
+  padding: 0.75rem 1.25rem;
+  font-size: 1rem;
+  background: #2f3a56;
+  color: var(--text);
+}
+
+.small-btn {
+  min-height: 2.4rem;
+  background: #374262;
+  color: var(--text);
+}
+
+.action-bar {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.action-btn {
+  min-height: 3.1rem;
+  padding: 0.6rem;
+  font-size: 0.95rem;
+  background: #2f3d5f;
+  color: #fff;
+}
+
+.action-btn:disabled,
+.small-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.pause-btn {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  z-index: 4;
+}
+
+.pause-btn.hidden {
+  display: none;
+}
+
+#instructionsPanel ul {
+  text-align: left;
+  max-width: 35rem;
+  line-height: 1.45;
+}
+
+@media (max-width: 900px) {
+  .top-bar {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    font-size: 0.95rem;
+  }
+
+  .upgrade-bar {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .action-bar {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .action-bar {
+    grid-template-columns: 1fr;
+  }
+
+  .action-btn {
+    min-height: 3.35rem;
+    font-size: 1rem;
+  }
+}
